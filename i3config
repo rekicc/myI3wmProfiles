@@ -424,7 +424,7 @@ mode "$mode_gaps_outer" {
 
 # #### customer setting ####
 exec_always --no-startup-id fcitx
-exec --no-startup-id $HOME/.config/autoswitchbackgrand.sh
+exec --no-startup-id $HOME/.config/ASBackgrand.sh
 exec --no-startup-id $HOME/.config/polybar/launch.sh
 # exec --no-startup-id thunderbird
 exec --no-startup-id $HOME/.screenlayout/output-vga.sh
