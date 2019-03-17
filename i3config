@@ -89,7 +89,6 @@ bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
-
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
@@ -141,16 +140,44 @@ bindsym $mod+Ctrl+Left workspace prev
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 "1:   "
-set $ws2 "2:   "
-set $ws3 "3:   "
-set $ws4 "4: ✉  "
-set $ws5 "5:   "
-set $ws6 "6:   "
-set $ws7 "7: "
-set $ws8 8
-set $ws9 9
+#set $ws1 "1:   "
+#set $ws2 "2:   "
+#set $ws3 "3:   "
+#set $ws4 "4: ✉  "
+#set $ws5 "5:   "
+#set $ws6 "6:   "
+#set $WS1  1:  
+#set $WS2  2: 
+#set $WS3  3: 
+#set $WS4  4:  
+#set $WS5  5:  
+#set $WS6  6: 
+#set $WS7  7:  
+#set $WS8  8: 
+#set $WS9  9:  
+#set $WS0  0:  
+#set $WS1   1:
+#set $WS2   2:
+#set $WS3   3:
+#set $WS4   4:
+#set $WS5   5:
+#set $WS6   6:
+#set $WS7   7:
+#set $WS8   8:
+#set $WS9   9:
+#set $WS0  10:
+#set $WSE   0:
 
+set $ws1 "1:"  
+set $ws2 "2:"
+set $ws3 "3:"
+set $ws4 "4:"   
+set $ws5 "5:"
+set $ws6 "6:"
+set $ws7 "7:"
+set $ws8 "8:"
+set $ws9 "9:"
+set $ws10 "10:"
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -215,8 +242,9 @@ for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [class="poi"] floating enable
-for_window [class="etbrains-pycharm-ce"] floating enable 
+for_window [class="jetbrains-pycharm-ce"] floating enable 
 for_window [class="jetbrains-idea-ce"] floating enable 
+for_window [class="Code"] floating enable
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
@@ -271,7 +299,7 @@ mode "resize" {
 }
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id blurlock
+bindsym $mod+F9 exec --no-startup-id i3lock-fancy
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -285,7 +313,7 @@ exec --no-startup-id clipit
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker blurlock
+exec --no-startup-id xautolock -time 10 -locker i3lock-fancy
 # exec_always --no-startup-id ff-theme-util
 # exec_always --no-startup-id fix_xcursor
 
@@ -321,36 +349,36 @@ set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
-bar {
-	i3bar_command i3bar
-	status_command i3status
-	position bottom
+#bar {
+#	i3bar_command i3bar
+#	status_command i3status
+#	position bottom
 #    i3bar_command i3bar -t
 #    height 25
-    font pango: mononoki Nerd Font Regular 10
+#    font pango: mononoki Nerd Font Regular 10
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 #	tray_output primary
 #	tray_output eDP1
 
-	bindsym button4 nop
-	bindsym button5 nop
+#	bindsym button4 nop
+#	bindsym button5 nop
 #   font xft:URWGothic-Book 11
-	strip_workspace_numbers yes
+#	strip_workspace_numbers yes
 
-    colors {
-        background #222D31
-        statusline #F9FAF9
-        separator  #454947
-
+#    colors {
+#        background #222D31
+#        statusline #F9FAF9
+#        separator  #454947
+#
 #                      border  backgr. text
-        focused_workspace  #F9FAF9 #16a085 #292F34
-        active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #222D31 #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
-    }
-}
+#        focused_workspace  #F9FAF9 #16a085 #292F34
+#        active_workspace   #595B5B #353836 #FDF6E3
+#        inactive_workspace #595B5B #222D31 #EEE8D5
+#        binding_mode       #16a085 #2C2C2C #F9FAF9
+#        urgent_workspace   #16a085 #FDF6E3 #E5201D
+#    }
+#}
 
 # hide/unhide i3status bar bindsym $mod+m bar mode toggle
 
@@ -385,9 +413,7 @@ smart_gaps on
 smart_borders on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps Gaps: (o) outer, (i) inner set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global) set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym $mod+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
@@ -422,15 +448,28 @@ mode "$mode_gaps_outer" {
 }
 
 
-# #### customer setting ####
+#=================================#
+#       customer setting
+#=================================#
+
+# 开机启动程序
 exec_always --no-startup-id fcitx
 exec --no-startup-id $HOME/.config/ASBackgrand.sh
 exec --no-startup-id $HOME/.config/polybar/launch.sh
 # exec --no-startup-id thunderbird
 exec --no-startup-id $HOME/.screenlayout/output-vga.sh
+
+# 将窗口移动到指定的工作区
 assign [class="Terminator"] $ws1
 assign [class="Google-chrome"] $ws2
 assign [class="electronic-wechat"] $ws3
 assign [class="Thunderbird"] $ws4
-assign [class="poi"] $ws5
-assign [class="Pcmanfm"] $ws6
+assign [class="netease-cloud-music"] $ws5
+assign [class="jetbrains-pycharm-ce"] $ws6
+assign [class="jetbrains-idea-ce"] $ws6
+assign [class="Code"] $ws6
+assign [class="Pcmanfm"] $ws8
+assign [class="poi"] $ws10
+
+#焦点不跟随鼠标移动
+focus_follows_mouse no
